@@ -9,9 +9,18 @@ const InsightsSection = () => {
     const containerRef = useRef(null);
     const [activeFilter, setActiveFilter] = useState('ALL');
 
-    const filters = ['ALL', 'WEB APP', 'MOBILE', 'E-COMMERCE', 'SAAS'];
+    const filters = ['ALL', 'WEB APP', 'MOBILE', 'BLOCKCHAIN', 'SAAS'];
 
     const insights = [
+        {
+            type: 'BLOCKCHAIN',
+            title: "OBS — Oracle Before Signing",
+            description: "The thinking layer between user intent and irreversible blockchain execution. Protect assets with AI-powered intent verification.",
+            techStack: "Next.js, Tailwind CSS, Node.js, TypeScript, EVM, MongoDB",
+            image: "/images/obs.webp",
+            action: "View Project",
+            link: "https://oracle-before-signing-app.vercel.app/enterprise"
+        },
         {
             type: 'SAAS',
             title: "FinAssist — Modern Financial Assistance & Scalable Insights",
@@ -104,7 +113,7 @@ const InsightsSection = () => {
                                             className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
                                         />
                                         <div className="absolute top-0 left-0">
-                                            <div className="bg-[#0080FFA3] text-white text-[12px] font-bold px-5 py-3 rounded-br-2xl uppercase tracking-widest flex items-center gap-2" style={{ backdropFilter: "blur(20px)" }}>
+                                            <div className="bg-[#006AFF] text-white text-[12px] font-bold px-5 py-3 rounded-br-2xl uppercase tracking-widest flex items-center gap-2" style={{ backdropFilter: "blur(20px)" }}>
                                                 <span className="w-1.5 h-1.5 bg-white"></span>
                                                 {item.type}
                                             </div>
