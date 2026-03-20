@@ -72,7 +72,7 @@ const SolutionSection = () => {
     }, { scope: containerRef });
 
     return (
-        <section ref={containerRef} className="relative w-full h-screen overflow-hidden flex flex-col justify-center text-white">
+        <section ref={containerRef} className="relative w-full h-auto min-h-screen lg:h-screen overflow-hidden flex flex-col justify-center text-white py-20 lg:py-0">
             <div className="absolute w-[30%] h-full top-0 right-0 bg-gradient-to-l from-[#0A0A0A] to-transparent z-50 pointer-events-none"></div>
             <div
                 ref={headerRef}

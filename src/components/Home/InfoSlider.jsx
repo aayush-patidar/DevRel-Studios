@@ -55,8 +55,8 @@ const InfoSlider = () => {
         <section
             ref={containerRef}
             className={`
-                relative w-full text-white overflow-hidden h-dvh
-                transition-[height] duration-500 ease-in-out 
+                relative w-full text-white overflow-hidden h-auto min-h-screen lg:h-dvh
+                transition-[height] duration-500 ease-in-out py-20 lg:py-0
             `}
         >
             {/* svgsssssssssssssss don't change broo, this gonaaa spoill everyyythingggg */}

@@ -78,7 +78,7 @@ const VisionSection = () => {
                 </p>
             </div>
 
-            <div className="w-full max-w-7xl mx-auto h-[800px] md:h-[600px] flex flex-col md:flex-row gap-4">
+            <div className="w-full max-w-7xl mx-auto h-[900px] md:h-[600px] flex flex-col md:flex-row gap-4">
                 {cards.map((card) => (
                     <div
                         key={card.id}
@@ -92,29 +92,14 @@ const VisionSection = () => {
                                 <span className="w-1.5 h-1.5 bg-white box-border" />
                                 {card.label}
                             </div>
-                            <div className="w-full h-full flex flex-col">
-                                <div className="flex-grow rounded-xl mb-6 relative overflow-y-hidden">
-                                    <img
-                                        src={card.image}
-                                        alt={card.title}
-                                        className="w-full h-full object-cover transition-transform duration-700"
-                                    />
+                            <div className="w-full h-full flex flex-col justify-center items-center text-center px-4">
+                                <div className="max-w-3xl">
+                                    <h3 className="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-4 leading-tight">{card.title}</h3>
+                                    <p className="font-serif text-[#0080FF] text-xl md:text-2xl mb-8 font-medium italic">{card.subtitle}</p>
+                                    <p className="font-sans text-[#FFFFFF99] text-base md:text-lg leading-relaxed mx-auto max-w-2xl">
+                                        {card.description}
+                                    </p>
                                 </div>
-                                <div className="flex flex-col md:flex-row justify-between items-start md:items-start gap-4">
-                                    <div>
-                                        <h3 className="font-serif text-3xl md:text-4xl text-white mb-1">{card.title}</h3>
-                                        <p className="font-serif text-white text-lg md:text-xl mb-3">{card.subtitle}</p>
-                                        <p className="font-sans text-[#FFFFFF52] text-sm leading-relaxed max-w-xl">
-                                            {card.description}
-                                        </p>
-                                    </div>
-                                    <div className="">
-                                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M25 8V21C25 21.2652 24.8947 21.5196 24.7071 21.7071C24.5196 21.8946 24.2652 22 24 22C23.7348 22 23.4804 21.8946 23.2929 21.7071C23.1054 21.5196 23 21.2652 23 21V10.4138L8.70751 24.7075C8.51987 24.8951 8.26537 25.0006 8.00001 25.0006C7.73464 25.0006 7.48015 24.8951 7.29251 24.7075C7.10487 24.5199 6.99945 24.2654 6.99945 24C6.99945 23.7346 7.10487 23.4801 7.29251 23.2925L21.5863 9H11C10.7348 9 10.4804 8.89464 10.2929 8.70711C10.1054 8.51957 10 8.26522 10 8C10 7.73478 10.1054 7.48043 10.2929 7.29289C10.4804 7.10536 10.7348 7 11 7H24C24.2652 7 24.5196 7.10536 24.7071 7.29289C24.8947 7.48043 25 7.73478 25 8Z" fill="white" />
-                                        </svg>
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
                         <div className={`absolute rounded-2xl inset-0 flex flex-col transition-all duration-300 ${activeId === card.id ? "opacity-0 pointer-events-none delay-0" : "opacity-100 delay-100"}`}>
