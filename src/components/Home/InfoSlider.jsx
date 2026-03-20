@@ -83,8 +83,8 @@ const InfoSlider = () => {
                 </svg>
             </div>
             <div className="relative z-10 w-full h-full flex flex-col pt-4 px-4 md:px-0">
-                <div className="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-2 grid-rows-2 w-full border-b border-[#FFFFFF14]">
-                    <div className={`border-b border-r border-[#FFFFFF14] p-8 md:p-12 flex flex-col justify-center relative transition-all duration-200 ${activeSlide === 1 ? "bg-[#FFFFFF0F]" : "bg-transparent"}`}>
+                <div className="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-2 w-full border-b border-[#FFFFFF14]">
+                    <div className={`border-b lg:border-r border-[#FFFFFF14] p-8 md:p-12 flex flex-col justify-center relative transition-all duration-200 ${activeSlide === 1 ? "bg-[#FFFFFF0F]" : "bg-transparent"}`}>
                         <div className="animate-fadeInKey" key={`tl-${activeSlide}`}>
                             <div className="flex items-center gap-2 mb-6">
                                 <span className="w-2 h-2 bg-white inline-block"></span>
@@ -107,7 +107,7 @@ const InfoSlider = () => {
                             )}
                         </div>
                     </div>
-                    <div className={`border-r border-[#FFFFFF14] p-8 md:p-12 flex flex-col justify-center relative transition-all duration-200 ${activeSlide === 0 || activeSlide === 2 ? "bg-[#FFFFFF0F]" : "bg-transparent"}`}>
+                    <div className={`border-b lg:border-b-0 lg:border-r border-[#FFFFFF14] p-8 md:p-12 flex flex-col justify-center relative transition-all duration-200 ${activeSlide === 0 || activeSlide === 2 ? "bg-[#FFFFFF0F]" : "bg-transparent"}`}>
                         <div className="w-full h-full animate-fadeInKey flex flex-col justify-center" key={`bl-${activeSlide}`}>
                             {slides[activeSlide].bl.isText && (
                                 <p className="font-sans font-light text-lg text-white leading-relaxed whitespace-pre-line overflow-y-auto max-h-full">
@@ -141,33 +141,33 @@ const InfoSlider = () => {
                         </div>
                     </div>
                 </div>
-                <div className="shrink-0 w-full h-16 flex items-center justify-center gap-4 text-2xl font-sans text-[#FFFFFF4D] mt-auto py-4">
+                <div className="shrink-0 w-full h-16 flex items-center justify-center gap-2 md:gap-4 text-xl md:text-2xl font-sans text-[#FFFFFF4D] mt-auto py-4">
                     <span className={`transition-colors duration-300 ${activeSlide >= 0 ? "text-white font-bold" : ""}`}>01</span>
-                    <div className="relative w-[200px] h-[10px]">
-                        <svg width="200" height="10" className="absolute top-0 left-0 opacity-80 z-0">
-                            <line x1="0" y1="1" x2="200" y2="1" stroke="#FFFFFF52" strokeWidth="4" strokeDasharray="4 4" />
-                            <line x1="0" y1="9" x2="200" y2="9" stroke="#FFFFFF52" strokeWidth="4" strokeDasharray="4 4" />
+                    <div className="relative w-[60px] md:w-[200px] h-[10px]">
+                        <svg width="100%" height="10" className="absolute top-0 left-0 opacity-80 z-0">
+                            <line x1="0" y1="1" x2="100%" y2="1" stroke="#FFFFFF52" strokeWidth="4" strokeDasharray="4 4" />
+                            <line x1="0" y1="9" x2="100%" y2="9" stroke="#FFFFFF52" strokeWidth="4" strokeDasharray="4 4" />
                         </svg>
                         <div className="absolute top-0 left-0 h-full overflow-hidden z-10"
                             style={{ width: `${Math.min(100, Math.max(0, scrollProgress * 3 * 100))}%` }}>
-                            <svg width="200" height="10" className="min-w-[200px]">
-                                <line x1="0" y1="1" x2="200" y2="1" stroke="white" strokeWidth="4" strokeDasharray="4 4" />
-                                <line x1="0" y1="9" x2="200" y2="9" stroke="white" strokeWidth="4" strokeDasharray="4 4" />
+                            <svg width="100%" height="10" className="min-w-[60px] md:min-w-[200px]">
+                                <line x1="0" y1="1" x2="100%" y2="1" stroke="white" strokeWidth="4" strokeDasharray="4 4" />
+                                <line x1="0" y1="9" x2="100%" y2="9" stroke="white" strokeWidth="4" strokeDasharray="4 4" />
                             </svg>
                         </div>
                     </div>
 
                     <span className={`transition-colors duration-300 ${activeSlide >= 1 ? "text-white font-bold" : ""}`}>02</span>
-                    <div className="relative w-[200px] h-[10px]">
-                        <svg width="200" height="10" className="absolute top-0 left-0 opacity-80 z-0">
-                            <line x1="0" y1="1" x2="200" y2="1" stroke="#FFFFFF52" strokeWidth="4" strokeDasharray="4 4" />
-                            <line x1="0" y1="9" x2="200" y2="9" stroke="#FFFFFF52" strokeWidth="4" strokeDasharray="4 4" />
+                    <div className="relative w-[60px] md:w-[200px] h-[10px]">
+                        <svg width="100%" height="10" className="absolute top-0 left-0 opacity-80 z-0">
+                            <line x1="0" y1="1" x2="100%" y2="1" stroke="#FFFFFF52" strokeWidth="4" strokeDasharray="4 4" />
+                            <line x1="0" y1="9" x2="100%" y2="9" stroke="#FFFFFF52" strokeWidth="4" strokeDasharray="4 4" />
                         </svg>
                         <div className="absolute top-0 left-0 h-full overflow-hidden z-10"
                             style={{ width: `${Math.min(100, Math.max(0, (scrollProgress * 3 - 1) * 100))}%` }}>
-                            <svg width="200" height="10" className="min-w-[200px]">
-                                <line x1="0" y1="1" x2="200" y2="1" stroke="white" strokeWidth="4" strokeDasharray="4 4" />
-                                <line x1="0" y1="9" x2="200" y2="9" stroke="white" strokeWidth="4" strokeDasharray="4 4" />
+                            <svg width="100%" height="10" className="min-w-[60px] md:min-w-[200px]">
+                                <line x1="0" y1="1" x2="100%" y2="1" stroke="white" strokeWidth="4" strokeDasharray="4 4" />
+                                <line x1="0" y1="9" x2="100%" y2="9" stroke="white" strokeWidth="4" strokeDasharray="4 4" />
                             </svg>
                         </div>
                     </div>

@@ -6,7 +6,6 @@ import SolutionSection from "../components/Home/SolutionSection";
 import MethodologySection from "../components/Home/MethodologySection";
 import VisionSection from "../components/Home/VisionSection";
 import LeadershipSection from "../components/Home/LeadershipSection";
-import RipplesSection from "../components/Home/RipplesSection";
 import InsightsSection from "../components/Home/InsightsSection";
 import TeamSection from "../components/Home/TeamSection";
 import JoinMovementSection from "../components/Home/JoinMovementSection";
@@ -38,9 +37,6 @@ export default function HomePage() {
             </div>
             <div className="relative w-full h-full">
                 <LeadershipSection />
-            </div>
-            <div className="relative w-full h-full">
-                <RipplesSection />
             </div>
             <div className="relative w-full h-full">
                 <InsightsSection />

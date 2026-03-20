@@ -1,7 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 
 const Footer = () => {
+    const [email, setEmail] = useState('');
+    const [status, setStatus] = useState('');
+
+    const handleSubscribe = async (e) => {
+        e.preventDefault();
+        if (!email) return;
+        setStatus('loading');
+
+        const data = new FormData();
+        data.append('email', email);
+        data.append('_subject', 'New Newsletter Subscription - DevRel Studios');
+
+        try {
+            const response = await fetch('https://formspree.io/f/xlgpaorq', {
+                method: 'POST',
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            if (response.ok) {
+                setStatus('success');
+                setEmail('');
+                setTimeout(() => setStatus(''), 5000);
+            } else {
+                setStatus('error');
+            }
+        } catch (error) {
+            setStatus('error');
+        }
+    };
+
     return (
         <footer className="relative w-full bg-[#0A0A0A66] text-white pt-24 mt-20 pb-8 px-4 md:px-8 font-sans">
             <div className="max-w-7xl mx-auto flex flex-col">
@@ -51,7 +83,7 @@ const Footer = () => {
                         </ul>
                     </div>
                 </div>
-                <div className="flex flex-col lg:flex-row justify-between items-end gap-12 mb-14 px-4">
+                <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-12 mb-14 px-4">
                     <div className="max-w-md w-full">
                         <div className="flex items-center gap-4 mb-6">
                             <h2 className="font-serif italic text-5xl font-black leading-none tracking-tighter">DRS</h2>
@@ -68,16 +100,31 @@ const Footer = () => {
 
                     <div className="w-full max-w-md">
                         <h3 className="font-serif text-xl mb-4 text-[#525252]">Stay in the loop</h3>
-                        <div className="flex gap-2">
+                        <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-2">
                             <input
                                 type="email"
+                                name="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                                disabled={status === 'loading' || status === 'success'}
                                 placeholder="Name@email.com"
-                                className="w-full bg-[#0D0D0D] border border-[#292929] rounded-sm px-4 py-3 text-white placeholder-[#FFFFFF3D] focus:outline-hidden text-sm italic"
+                                className="w-full bg-[#0D0D0D] border border-[#292929] rounded-sm px-4 py-3 text-white placeholder-[#FFFFFF3D] focus:outline-hidden text-sm italic disabled:opacity-50 transition-all duration-300"
                             />
-                            <button className="bg-[#006AFF] text-white font-bold px-6 py-3 rounded-sm transition-colors uppercase text-sm tracking-wider whitespace-nowrap hover:bg-[#0058D6]">
-                                Subscribe
+                            <button
+                                type="submit"
+                                disabled={status === 'loading' || status === 'success'}
+                                className="bg-[#006AFF] text-white font-bold px-6 py-3 rounded-sm transition-colors uppercase text-sm tracking-wider whitespace-nowrap hover:bg-[#0058D6] disabled:opacity-70 disabled:cursor-not-allowed"
+                            >
+                                {status === 'loading' ? 'Sending...' : status === 'success' ? 'Subscribed' : 'Subscribe'}
                             </button>
-                        </div>
+                        </form>
+                        {status === 'error' && (
+                            <p className="text-red-400 text-xs mt-2 font-sans transition-opacity">Something went wrong. Please try again.</p>
+                        )}
+                        {status === 'success' && (
+                            <p className="text-[#0080FF] text-xs mt-2 font-sans transition-opacity">Thanks for subscribing!</p>
+                        )}
                     </div>
                 </div>
 

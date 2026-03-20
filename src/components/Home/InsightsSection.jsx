@@ -13,46 +13,13 @@ const InsightsSection = () => {
 
     const insights = [
         {
-            type: 'WEB APP',
-            title: "High-Performance SaaS Dashboard with Real-Time Analytics",
-            date: "Result: 3x faster load times, 40% increase in user retention",
-            image: "/images/lucaweb.webp",
-            action: "View Project"
-        },
-        {
-            type: 'E-COMMERCE',
-            title: "Custom E-Commerce Platform with Seamless Checkout Experience",
-            date: "Result: 2x conversion rate improvement post-launch",
-            image: "/images/lucaweb.webp",
-            action: "View Project"
-        },
-        {
             type: 'SAAS',
-            title: "B2B SaaS Product Built from MVP to Funded Startup",
-            date: "Result: Raised seed funding 4 months after launch",
-            image: "/images/lucaweb.webp",
-            action: "View Project"
-        },
-        {
-            type: 'WEB APP',
-            title: "Enterprise API Platform Serving 500K+ Requests per Day",
-            date: "Result: 99.9% uptime, zero critical incidents in 12 months",
-            image: "/images/lucaweb.webp",
-            action: "View Project"
-        },
-        {
-            type: 'MOBILE',
-            title: "Cross-Platform Mobile App with Offline-First Architecture",
-            date: "Result: 4.8★ app store rating, 10K+ downloads in first month",
-            image: "/images/lucaweb.webp",
-            action: "View Project"
-        },
-        {
-            type: 'WEB APP',
-            title: "Complete Digital Rebrand & Web Presence for Growing Agency",
-            date: "Result: 5x increase in qualified inbound leads",
-            image: "/images/lucaweb.webp",
-            action: "View Project"
+            title: "FinAssist — Modern Financial Assistance & Scalable Insights",
+            description: "A comprehensive platform helping users manage and analyze financial data with real-time analytics and a clean UI.",
+            techStack: "TypeScript, Tailwind CSS",
+            image: "/images/finassist.webp",
+            action: "View Project",
+            link: "https://finassist-prod.vercel.app/"
         }
     ];
 
@@ -85,8 +52,10 @@ const InsightsSection = () => {
 
     return (
         <section id="projects" ref={containerRef} className="relative w-full py-24 px-4 md:px-8 flex flex-col items-center">
-            <div className='absolute bottom-0 left-0 h-[60%] w-full z-10 bg-linear-to-t from-[#00264D] to-transparent '></div>
-            <div className="w-full max-w-7xl mb-12 -z-10">
+            {insights.length > 6 && (
+                <div className='absolute bottom-0 left-0 h-[60%] w-full z-10 bg-linear-to-t from-[#00264D] to-transparent pointer-events-none'></div>
+            )}
+            <div className="w-full max-w-7xl mb-12">
                 <div className="insight-header flex items-center gap-3 mb-6">
                     <span className="w-2.5 h-2.5 bg-[#52525266] inline-block" />
                     <span className="text-white font-sans text-xs font-bold tracking-[0.2em] uppercase">
@@ -99,60 +68,90 @@ const InsightsSection = () => {
                 <p className="insight-header font-sans text-[#FFFFFF6B] text-base md:text-lg mb-10">
                     We let results speak for themselves. Every project is focused on delivering measurable business outcomes.
                 </p>
-                <div className="flex flex-wrap gap-4">
-                    {filters.map((filter) => (
-                        <button
-                            key={filter}
-                            onClick={() => setActiveFilter(filter)}
-                            className={`filter-btn px-6 py-3 text-xs font-bold tracking-widest uppercase transition-colors duration-300 ${activeFilter === filter
-                                ? 'bg-[#0080FF6B] text-white rounded-sm backdrop-blur-lg'
-                                : 'bg-[#0080FF33] text-white rounded-sm border border-[#0080FF4D]'
-                                }`}
-                        >
-                            {filter === 'ALL' && <span className="inline-block w-1.5 h-1.5 bg-white mr-2 mb-0.5"></span>}
-                            {filter}
-                        </button>
-                    ))}
-                </div>
+                {insights.length > 3 && (
+                    <div className="flex flex-wrap gap-4">
+                        {filters.map((filter) => (
+                            <button
+                                key={filter}
+                                onClick={() => setActiveFilter(filter)}
+                                className={`filter-btn px-6 py-3 text-xs font-bold tracking-widest uppercase transition-colors duration-300 ${activeFilter === filter
+                                    ? 'bg-[#0080FF6B] text-white rounded-sm backdrop-blur-lg'
+                                    : 'bg-[#0080FF33] text-white rounded-sm border border-[#0080FF4D]'
+                                    }`}
+                            >
+                                {filter === 'ALL' && <span className="inline-block w-1.5 h-1.5 bg-white mr-2 mb-0.5"></span>}
+                                {filter}
+                            </button>
+                        ))}
+                    </div>
+                )}
             </div>
-            <div className="relative w-full max-w-7xl">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {filtered.map((item, index) => (
-                        <div key={index} className="insight-card group cursor-pointer">
-                            <div className="overflow-hidden border border-[#262626] hover:border-[#0080FF4D] transition-colors duration-300">
-                                <div className="relative h-48 sm:h-56 w-full overflow-hidden p-4">
-                                    <img
-                                        src={item.image}
-                                        alt={item.title}
-                                        className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
-                                    />
-                                    <div className="absolute top-0 left-0">
-                                        <div className="bg-[#0080FFA3] text-white text-[12px] font-bold px-5 py-3 rounded-br-2xl uppercase tracking-widest flex items-center gap-2" style={{ backdropFilter: "blur(20px)" }}>
-                                            <span className="w-1.5 h-1.5 bg-white"></span>
-                                            {item.type}
+            <div className="relative w-full max-w-7xl min-h-[400px]">
+                {filtered.length > 0 ? (
+                    <div className={`grid gap-6 w-full ${filtered.length === 1
+                        ? 'grid-cols-1 max-w-4xl mx-auto'
+                        : filtered.length === 2
+                            ? 'grid-cols-1 md:grid-cols-2'
+                            : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
+                        }`}>
+                        {filtered.map((item, index) => (
+                            <div key={index} className="insight-card group cursor-pointer">
+                                <div className="overflow-hidden border border-[#262626] hover:border-[#0080FF4D] transition-colors duration-300">
+                                    <a href={item.link} target="_blank" rel="noreferrer" className={`relative ${filtered.length === 1 ? 'h-64 sm:h-[400px]' : 'h-48 sm:h-56'} w-full block overflow-hidden p-4`}>
+                                        <img
+                                            src={item.image}
+                                            alt={item.title}
+                                            className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
+                                        />
+                                        <div className="absolute top-0 left-0">
+                                            <div className="bg-[#0080FFA3] text-white text-[12px] font-bold px-5 py-3 rounded-br-2xl uppercase tracking-widest flex items-center gap-2" style={{ backdropFilter: "blur(20px)" }}>
+                                                <span className="w-1.5 h-1.5 bg-white"></span>
+                                                {item.type}
+                                            </div>
                                         </div>
+                                    </a>
+                                    <div className="px-4 pb-4 flex flex-col h-full">
+                                        <h3 className="font-sans text-base lg:text-lg text-white leading-snug mb-2 font-bold">
+                                            {item.title}
+                                        </h3>
+                                        <p className="font-sans text-[#FFFFFF6B] text-xs leading-relaxed mb-4 line-clamp-2">
+                                            {item.description}
+                                        </p>
+                                        <div className="flex flex-wrap gap-2 mb-6 mt-auto">
+                                            {item.techStack.split(',').map((tech, i) => (
+                                                <span key={i} className="text-[10px] uppercase font-bold tracking-widest text-[#0080FFCC] bg-[#0080FF14] px-2 py-1 rounded-sm border border-[#0080FF33]">
+                                                    {tech.trim()}
+                                                </span>
+                                            ))}
+                                        </div>
+                                        <a
+                                            href={item.link}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="w-full py-3 bg-[#FFFFFF1A] rounded-sm text-white text-sm font-medium text-center hover:bg-[#FFFFFF2A] transition-colors duration-300 no-underline"
+                                        >
+                                            {item.action}
+                                        </a>
                                     </div>
                                 </div>
-                                <div className="px-4 pb-4 flex flex-col h-full">
-                                    <h3 className="font-sans text-base text-white leading-snug mb-2 line-clamp-3">
-                                        {item.title}
-                                    </h3>
-                                    <p className="text-[#0080FFCC] text-xs font-sans mb-6 mt-auto font-medium">
-                                        {item.date}
-                                    </p>
-                                    <button className="w-full py-3 bg-[#FFFFFF1A] rounded-sm text-white text-sm font-medium text-center hover:bg-[#FFFFFF2A] transition-colors duration-300">
-                                        {item.action}
-                                    </button>
-                                </div>
                             </div>
-                        </div>
-                    ))}
-                </div>
-                <div className="absolute bottom-0 left-0 w-full h-[400px] flex items-end justify-center pb-10 cursor-pointer">
-                    <button className="pointer-events-auto bg-[#006AFF] text-white z-10 font-sans py-4 px-6 hover:bg-[#0058D6] transition-colors duration-300">
-                        View All Projects
-                    </button>
-                </div>
+                        ))}
+                    </div>
+                ) : (
+                    <div className="flex flex-col items-center justify-center h-full py-32 border border-dashed border-[#FFFFFF14] rounded-2xl">
+                        <p className="font-sans text-white text-lg opacity-50 italic">
+                            No projects are currently listed. Check back soon for our latest work!
+                        </p>
+                    </div>
+                )}
+
+                {insights.length > 6 && (
+                    <div className="absolute bottom-0 left-0 w-full h-[400px] flex items-end justify-center pb-10 pointer-events-none">
+                        <button className="pointer-events-auto bg-[#006AFF] text-white z-10 font-sans py-4 px-6 hover:bg-[#0058D6] transition-colors duration-300">
+                            View All Projects
+                        </button>
+                    </div>
+                )}
             </div>
 
         </section>
