@@ -39,8 +39,8 @@ const VisionOriginSection = () => {
     }, { scope: containerRef });
 
     return (
-        <div ref={containerRef} className="relative w-full min-h-screen text-white">
-            <section ref={triggerRef} className="relative h-screen w-full flex flex-col px-4 md:px-8 pt-12 pb-8">
+        <div ref={containerRef} className="relative w-full min-h-screen text-white overflow-hidden">
+            <section ref={triggerRef} className="relative h-screen w-full flex flex-col px-4 sm:px-8 md:px-12 pt-12 pb-8 overflow-hidden">
                 {/* svgsssssssssssssss don't change broo, this gonaaa spoill everyyythingggg */}
                 <div className='absolute h-full w-full bottom-full left-0 -z-10'>
                     <svg width="full" height="1500" className="min-h-[190vh]" viewBox="0 0 1280 1607" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -64,7 +64,7 @@ const VisionOriginSection = () => {
                         </defs>
                     </svg>
                 </div>
-                <div ref={headerRef} className="w-full max-w-4xl mx-auto flex flex-col items-center shrink-0 z-20">
+                <div ref={headerRef} className="w-full max-w-4xl mx-auto flex flex-col items-center shrink-0 z-20 px-2">
                     <div className="flex items-center justify-center gap-3 mb-6">
                         <span className="w-2.5 h-2.5 bg-white inline-block" />
                         <span className="text-white font-sans text-xs font-bold tracking-[0.2em] uppercase shadow-black drop-shadow-md">
@@ -72,7 +72,7 @@ const VisionOriginSection = () => {
                         </span>
                     </div>
 
-                    <h2 className="font-serif text-4xl md:text-6xl lg:text-7xl leading-[1.1] mb-8 text-center drop-shadow-lg">
+                    <h2 className="font-serif text-3xl sm:text-4xl md:text-6xl lg:text-7xl leading-[1.1] mb-8 text-center drop-shadow-lg">
                         Born <span className="italic text-[#FFFFFF3D] font-serif">from</span> a Vision, <br />
                         Built on Experience
                     </h2>

@@ -8,7 +8,7 @@ import JoinMovementSection from "../components/About/JoinMovementSection";
 
 export default function AboutPage() {
     return (
-        <div>
+        <div className="overflow-x-hidden w-full">
             <Hero />
             <VisionOriginSection />
             <FounderSection />

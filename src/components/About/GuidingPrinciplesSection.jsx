@@ -5,6 +5,15 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const principles = [
+    "Trust Through Transparency",
+    "Respect for People",
+    "Evidence Over Ideology",
+    "Impact Beyond Profit",
+    "Continuous Learning",
+    "Integration Over Isolation",
+];
+
 const GuidingPrinciplesSection = () => {
     const containerRef = useRef(null);
     useGSAP(() => {
@@ -39,8 +48,8 @@ const GuidingPrinciplesSection = () => {
     }, { scope: containerRef });
 
     return (
-        <section ref={containerRef} className="relative w-full min-h-screen flex items-center justify-center py-24">
-            {/* svgsssssssssssssss don't change broo, this gonaaa spoill everyyythingggg */}
+        <section ref={containerRef} className="relative w-full min-h-screen flex items-center justify-center pt-4 pb-20 overflow-hidden">
+            {/* Background glow */}
             <div className='absolute h-full w-full -top-10 left-0 z-[-1]'>
                 <svg width="100%" height="2098" viewBox="0 0 1280 2098" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g filter="url(#filter0_f_601_9)">
@@ -62,10 +71,35 @@ const GuidingPrinciplesSection = () => {
                         </filter>
                     </defs>
                 </svg>
-
             </div>
 
-            <div className="relative w-full max-w-6xl aspect-video flex items-center justify-center">
+            {/* ─── MOBILE: card grid ─── */}
+            <div className="md:hidden w-full max-w-lg mx-auto px-4 flex flex-col items-center gap-6">
+                {/* Center label */}
+                <div className="center-node w-full max-w-[260px] py-5 rounded-full border border-[#FFFFFF80] bg-[#FFFFFF14] flex items-center justify-center backdrop-blur-sm" style={{ boxShadow: "0px 4px 60px 0px #FFFFFF1A" }}>
+                    <div className="flex items-center gap-3">
+                        <span className="w-2.5 h-2.5 bg-white inline-block" />
+                        <span className="text-white font-sans text-sm font-bold tracking-[0.2em] uppercase">WHAT GUIDES US</span>
+                    </div>
+                </div>
+
+                {/* Principle pills grid */}
+                <div className="grid grid-cols-2 gap-3 w-full">
+                    {principles.map((p, i) => (
+                        <div
+                            key={i}
+                            className="principle-node flex items-center justify-center gap-2 px-4 py-3 rounded-full border border-[#FFFFFF0A] bg-[#FFFFFF14] backdrop-blur-sm text-center"
+                            style={{ boxShadow: "0px 0px 20px 0px #FFFFFF14" }}
+                        >
+                            <span className="w-1.5 h-1.5 bg-white rounded-full shrink-0" />
+                            <span className="text-white/90 font-serif italic text-sm leading-snug">{p}</span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            {/* ─── DESKTOP: original mind-map layout ─── */}
+            <div className="hidden md:flex relative w-full max-w-6xl aspect-video items-center justify-center overflow-hidden">
                 <svg
                     className="absolute inset-0 w-full h-full pointer-events-none z-0"
                     viewBox="0 0 100 100"
@@ -78,7 +112,6 @@ const GuidingPrinciplesSection = () => {
                     <path pathLength="100" d="M 50 50 C 40 50, 40 25, 30 25" className="connector-line fill-none stroke-white/20 stroke-[0.15] [stroke-dasharray:1,1]" />
                     <path pathLength="100" d="M 50 50 L 22 50" className="connector-line fill-none stroke-white/20 stroke-[0.15] [stroke-dasharray:1,1]" />
                     <path pathLength="100" d="M 50 50 C 40 50, 40 75, 30 75" className="connector-line fill-none stroke-white/20 stroke-[0.15] [stroke-dasharray:1,1]" />
-
                     <path pathLength="100" d="M 50 50 C 60 50, 60 25, 70 25" className="connector-line fill-none stroke-white/20 stroke-[0.15] [stroke-dasharray:1,1]" />
                     <path pathLength="100" d="M 50 50 L 78 50" className="connector-line fill-none stroke-white/20 stroke-[0.15] [stroke-dasharray:1,1]" />
                     <path pathLength="100" d="M 50 50 C 60 50, 60 75, 70 75" className="connector-line fill-none stroke-white/20 stroke-[0.15] [stroke-dasharray:1,1]" />
@@ -130,7 +163,6 @@ const GuidingPrinciplesSection = () => {
                         <span className="text-white/90 font-serif italic text-[17px] tracking-wide">Integration Over Isolation</span>
                     </div>
                 </div>
-
             </div>
         </section>
     );

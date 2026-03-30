@@ -16,7 +16,7 @@ export default function HomePage() {
     const cursorRef = React.useRef(null);
 
     return (
-        <>
+        <div className="overflow-x-hidden w-full">
             <div className="relative w-full h-full">
                 <Hero />
             </div>
@@ -50,6 +50,6 @@ export default function HomePage() {
             <div className="relative w-full h-full">
                 <JoinMovementSection />
             </div>
-        </>
+        </div>
     )
 }

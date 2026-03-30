@@ -78,7 +78,7 @@ const VisionSection = () => {
                 </p>
             </div>
 
-            <div className="w-full max-w-7xl mx-auto h-[900px] md:h-[600px] flex flex-col md:flex-row gap-4">
+            <div className="w-full max-w-7xl mx-auto min-h-[700px] sm:min-h-[850px] md:h-[600px] flex flex-col md:flex-row gap-4">
                 {cards.map((card) => (
                     <div
                         key={card.id}
