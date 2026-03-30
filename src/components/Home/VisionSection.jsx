@@ -103,7 +103,7 @@ const VisionSection = () => {
                             </div>
                         </div>
                         <div className={`absolute rounded-2xl inset-0 flex flex-col transition-all duration-300 ${activeId === card.id ? "opacity-0 pointer-events-none delay-0" : "opacity-100 delay-100"}`}>
-                            <div className={`h-[18%] w-full p-4 flex flex-col gap-2 bg-[#0080FF52]`}>
+                            <div className="shrink-0 w-full p-4 flex flex-col gap-1 md:gap-2 bg-[#0080FF52]">
                                 <span className="w-1.5 h-1.5 bg-white block" />
                                 <span className="text-white font-sans text-[12px] font-bold tracking-widest uppercase leading-loose w-32">
                                     {card.label}
