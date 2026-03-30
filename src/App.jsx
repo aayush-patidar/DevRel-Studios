@@ -9,6 +9,7 @@ import AboutPage from './Pages/AboutPage';
 import EcosystemPage from './Pages/EcosystemPage';
 import CoursesPage from './Pages/CoursesPage';
 import ContactPage from './Pages/ContactPage';
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         </Routes>
       </div>
       <Footer />
+      <Analytics />
     </ReactLenis>
   );
 }
