@@ -54,11 +54,31 @@ const MethodologySection = () => {
                     </p>
                 </div>
             </div>
-            <div className="max-w-6xl mx-auto pt-16 md:pt-28 h-auto md:h-[80vh] flex flex-col md:flex-row justify-between items-start md:items-end gap-12 md:gap-4 px-4 md:px-0">
-                <div className="w-full md:w-1/3 min-h-[140px] md:h-full flex items-start md:items-end gap-4 group">
-                    <div className="bar-1 w-2 md:w-full lg:w-32 bg-gradient-to-b from-[#006AFF] md:from-[#000000] to-transparent h-0 relative">
-                        <div className="absolute top-0 left-6 md:left-full md:ml-8 max-w-[80vw] md:w-[300px] opacity-0 text-1">
-                            <h3 className="font-serif text-2xl md:text-3xl text-white mb-3">Discover & Design</h3>
+            {/* ─── MOBILE: static card stack ─── */}
+            <div className="md:hidden max-w-xl mx-auto pt-12 flex flex-col gap-6 px-2">
+                {[
+                    { num: '01', title: 'Discover & Design', items: ['Understand goals and vision', 'Define product strategy', 'Create intuitive experiences'] },
+                    { num: '02', title: 'Build & Launch', items: ['Develop scalable solutions', 'Rigorous quality assurance', 'Smooth, reliable deployment'] },
+                    { num: '03', title: 'Scale & Grow', items: ['Post-launch support', 'Performance optimization', 'Continuous improvements'] },
+                ].map(({ num, title, items }) => (
+                    <div key={num} className="flex gap-5 p-5 rounded-2xl border border-[#FFFFFF0F] bg-[#0A0A0A60] backdrop-blur-sm">
+                        <span className="font-serif text-4xl text-[#006AFF] leading-none shrink-0 mt-1">{num}</span>
+                        <div>
+                            <h3 className="font-serif text-xl text-white mb-2">{title}</h3>
+                            <ul className="list-disc list-inside text-white text-sm space-y-1 font-sans opacity-70">
+                                {items.map(item => <li key={item}>{item}</li>)}
+                            </ul>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+            {/* ─── DESKTOP: animated bar layout ─── */}
+            <div className="hidden md:flex max-w-6xl mx-auto pt-28 h-[80vh] flex-row justify-between items-end gap-4">
+                <div className="w-1/3 h-full flex items-end gap-4 group">
+                    <div className="bar-1 w-full lg:w-32 bg-gradient-to-b from-[#000000] to-transparent h-0 relative">
+                        <div className="absolute top-0 left-full ml-8 max-w-[80vw] md:w-[300px] opacity-0 text-1">
+                            <h3 className="font-serif text-3xl text-white mb-3">Discover & Design</h3>
                             <ul className="list-disc list-inside text-white text-sm space-y-1 font-sans">
                                 <li>Understand goals and vision</li>
                                 <li>Define product strategy</li>
@@ -67,10 +87,10 @@ const MethodologySection = () => {
                         </div>
                     </div>
                 </div>
-                <div className="w-full md:w-1/3 min-h-[140px] md:h-[70%] flex items-start md:items-end gap-4 group">
-                    <div className="bar-2 w-2 md:w-full lg:w-32 bg-gradient-to-b from-[#006AFF] md:from-[#000000] to-transparent h-0 relative">
-                        <div className="absolute top-0 left-6 md:left-full md:ml-8 max-w-[80vw] md:w-[400px] opacity-0 text-2">
-                            <h3 className="font-serif text-2xl md:text-3xl text-white mb-3">Build & Launch</h3>
+                <div className="w-1/3 h-[70%] flex items-end gap-4 group">
+                    <div className="bar-2 w-full lg:w-32 bg-gradient-to-b from-[#000000] to-transparent h-0 relative">
+                        <div className="absolute top-0 left-full ml-8 max-w-[80vw] md:w-[400px] opacity-0 text-2">
+                            <h3 className="font-serif text-3xl text-white mb-3">Build & Launch</h3>
                             <ul className="list-disc list-inside text-white text-sm space-y-1 font-sans">
                                 <li>Develop scalable solutions</li>
                                 <li>Rigorous quality assurance</li>
@@ -79,10 +99,10 @@ const MethodologySection = () => {
                         </div>
                     </div>
                 </div>
-                <div className="w-full md:w-1/3 min-h-[140px] md:h-[40%] flex items-start md:items-end gap-4 group">
-                    <div className="bar-3 w-2 md:w-full lg:w-32 bg-gradient-to-b from-[#006AFF] md:from-[#000000] to-transparent h-0 relative">
-                        <div className="absolute top-0 left-6 md:left-full md:ml-8 max-w-[80vw] md:w-[300px] opacity-0 text-3">
-                            <h3 className="font-serif text-2xl md:text-3xl text-white mb-3">Scale & Grow</h3>
+                <div className="w-1/3 h-[40%] flex items-end gap-4 group">
+                    <div className="bar-3 w-full lg:w-32 bg-gradient-to-b from-[#000000] to-transparent h-0 relative">
+                        <div className="absolute top-0 left-full ml-8 max-w-[80vw] md:w-[300px] opacity-0 text-3">
+                            <h3 className="font-serif text-3xl text-white mb-3">Scale & Grow</h3>
                             <ul className="list-disc list-inside text-white text-sm space-y-1 font-sans">
                                 <li>Post-launch support</li>
                                 <li>Performance optimization</li>
@@ -93,6 +113,7 @@ const MethodologySection = () => {
                 </div>
             </div>
         </section>
+
     );
 };
 
