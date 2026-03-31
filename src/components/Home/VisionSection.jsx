@@ -78,7 +78,7 @@ const VisionSection = () => {
                 </p>
             </div>
 
-            <div className="w-full max-w-7xl mx-auto min-h-[700px] sm:min-h-[850px] md:h-[600px] flex flex-col md:flex-row gap-4">
+            <div className="w-full max-w-7xl mx-auto min-h-[900px] lg:h-[600px] flex flex-col lg:flex-row gap-4">
                 {cards.map((card) => (
                     <div
                         key={card.id}
@@ -92,11 +92,11 @@ const VisionSection = () => {
                                 <span className="w-1.5 h-1.5 bg-white box-border" />
                                 {card.label}
                             </div>
-                            <div className="w-full h-full flex flex-col justify-center items-center text-center px-4 pt-24 md:pt-4">
+                            <div className="w-full h-full flex flex-col justify-center items-center text-center px-4 pt-16 lg:pt-4 overflow-y-auto no-scrollbar pb-6">
                                 <div className="max-w-3xl">
-                                    <h3 className="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-4 leading-tight">{card.title}</h3>
-                                    <p className="font-serif text-[#0080FF] text-xl md:text-2xl mb-8 font-medium italic">{card.subtitle}</p>
-                                    <p className="font-sans text-[#FFFFFF99] text-base md:text-lg leading-relaxed mx-auto max-w-2xl">
+                                    <h3 className="font-serif text-3xl md:text-5xl lg:text-6xl text-white mb-3 md:mb-4 leading-tight">{card.title}</h3>
+                                    <p className="font-serif text-[#0080FF] text-lg md:text-2xl mb-4 md:mb-8 font-medium italic">{card.subtitle}</p>
+                                    <p className="font-sans text-[#FFFFFF99] text-sm md:text-lg leading-relaxed mx-auto max-w-2xl">
                                         {card.description}
                                     </p>
                                 </div>
